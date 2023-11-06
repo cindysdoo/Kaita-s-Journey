@@ -138,13 +138,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1684021578536327482, guid: a1c25543c641efd49b4b634a2fb65d7f,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1964762
+      objectReference: {fileID: 0}
+    - target: {fileID: 1684021578536327482, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.23661189
+      objectReference: {fileID: 0}
+    - target: {fileID: 1684021578536327482, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1684021578536327482, guid: a1c25543c641efd49b4b634a2fb65d7f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.43
+      value: -2.68
       objectReference: {fileID: 0}
     - target: {fileID: 1684021578536327482, guid: a1c25543c641efd49b4b634a2fb65d7f,
         type: 3}
@@ -185,6 +195,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782688403350981682, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fd55148adcc55a438f64e4398f166ef,
+        type: 3}
+    - target: {fileID: 3782688403350981682, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782688403350981682, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782688403350981682, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8618099400406708149, guid: a1c25543c641efd49b4b634a2fb65d7f,
         type: 3}
