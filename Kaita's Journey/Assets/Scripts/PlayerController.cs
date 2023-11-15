@@ -4,75 +4,65 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public CharacterController controller;
-
-    private Rigidbody2D myRB;
-
-    private float horizontal; 
-    public float runSpeed = 10f;
-    public float jumpHeight = 16f;
-    public float groundDetectDistance = 0.5f;
-    private bool isFacingRight = true;
-    private Vector3 moveDirection; 
-
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundcheck;
-    [SerializeField] private LayerMask groundlayer;
-    [SerializeField] private float speed, levitationSpeed;
-
+    public float gravity;
+    public Vector2 velocity;
+    public float jumpVelocity;
+    public float GroundHeight = 10;
+    public float maxHoldingJtime = 0.4f;
+    public float holdJtimer = 0.0f;
+    public bool isGounded = false;
+    public bool isHoldingJ = false;
     // Start is called before the first frame update
     void Start()
     {
-        myRB = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump") && isGround())
+        if (isGounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight); 
+            if (isHoldingJ)
+            {
+                holdJtimer += Time.fixedDeltaTime;
+                if (holdJtimer >= maxHoldingJtime)
+                {
+                    isHoldingJ = false;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isGounded = false;
+                velocity.y = jumpVelocity;
+                isHoldingJ = true;
+            }
         }
-        
-        Vector2 tempVel = myRB.velocity;
-
-        tempVel.x = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-        if (Input.GetButtonDown("Jump") && Physics2D.Raycast(transform.position, Vector2.down, groundDetectDistance))
-            tempVel.y += jumpHeight;
-
-        //moving our chracter 
-        myRB.velocity = tempVel;
-        Flip();
-        Fly();
-  
-    }
-
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
-    }
-    private void Fly()
-    {
-        moveDirection = Vector3.up * levitationSpeed * Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space))
-            controller.Move(moveDirection);
-        else if (Input.GetKey(KeyCode.LeftShift))
-            controller.Move(-moveDirection);
-    }
-    private void Flip ()
-    {
-        if(isFacingRight && horizontal < 0f || isFacingRight && horizontal > 0f)
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale; 
+            isHoldingJ = false;
         }
     }
-    private bool isGround()
+    private void FixedUpdate()
     {
-        return Physics2D.OverlapCircle(groundcheck.position, 0.3f, groundlayer);
+        Vector2 pos = transform.position;
+        if (!isGounded)
+        {
+            pos.y += velocity.y * Time.fixedDeltaTime;
+            if (isHoldingJ)
+            {
+                velocity.y += gravity * Time.fixedDeltaTime;
+            }
+            velocity.y += gravity * Time.fixedDeltaTime;
+            if (pos.y <= GroundHeight)
+            {
+                pos.y = GroundHeight;
+                isGounded = true;
+                holdJtimer = 0;
+            }
+        }
+
+        transform.position = pos;
     }
 }
+

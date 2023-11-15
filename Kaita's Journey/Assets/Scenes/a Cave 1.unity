@@ -211,6 +211,49 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &1048201856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8618099400406708149, guid: a1c25543c641efd49b4b634a2fb65d7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3987456181981992315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1048201861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048201856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e42d28cda46b34cb7f8804e6db4c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1048201862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048201856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879f2f1416997c046b56a3331f65416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1048201863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048201856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c186fc0fcc494cc48b74481ec7f49889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorGameObject: {fileID: 0}
 --- !u!1001 &1100255896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8587,6 +8630,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 24ee5447fd449924691b1b3effb6badf, type: 3}
+--- !u!1 &1246394235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8640459110251749000, guid: 2206ac811501b2b42b470ae04b76fe0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8640459111198653782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1246394241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246394235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a3a7ea995e6014d811159c714f9b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 0
+  velocity: {x: 0, y: 0}
+  jumpVelocity: 0
+  GroundHeight: 10
+  maxHoldingJtime: 0.4
+  holdJtimer: 0
+  isGounded: 0
+  isHoldingJ: 0
 --- !u!1 &1525356483
 GameObject:
   m_ObjectHideFlags: 0
@@ -8737,7 +8806,7 @@ PrefabInstance:
     - target: {fileID: 8618099400406708149, guid: a1c25543c641efd49b4b634a2fb65d7f,
         type: 3}
       propertyPath: m_Name
-      value: Door
+      value: Idoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -8905,12 +8974,12 @@ PrefabInstance:
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.71
+      value: -6.54
       objectReference: {fileID: 0}
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.57
+      value: -2.74
       objectReference: {fileID: 0}
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
@@ -8950,6 +9019,11 @@ PrefabInstance:
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640459110251749046, guid: 2206ac811501b2b42b470ae04b76fe0b,
+        type: 3}
+      propertyPath: m_SleepingMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
