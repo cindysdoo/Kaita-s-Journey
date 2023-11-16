@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float gravity;
+    public float speed = 5;
     public Vector2 velocity;
     private Rigidbody2D myRB;
     public float jumpVelocity = 5;
     public float flyingAccel = 1f;
-    public float GroundHeight = 10;
     public float maxHoldingJtime = 10f;
     public float holdJtimer = 0.0f;
     public bool isGrounded = false;
@@ -19,20 +18,22 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        velocity = new Vector2();
     }
 
     // Update is called once per frame
     void Update()
     {
+        velocity = myRB.velocity;
+
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f);
 
         if (isGrounded)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                velocity = myRB.velocity;
                 isGrounded = false;
-                velocity.y += jumpVelocity;
+                velocity.y = jumpVelocity;
                 myRB.velocity = velocity;
                 isHoldingJ = true;
                 holdJtimer = 0;
@@ -42,23 +43,20 @@ public class PlayerController : MonoBehaviour
         else if (!isGrounded && isHoldingJ)
         {
             if (isHoldingJ && holdJtimer < maxHoldingJtime)
-                holdJtimer += Time.fixedDeltaTime;
+            {
+                holdJtimer += Time.deltaTime;
 
-            else if (holdJtimer >= maxHoldingJtime)
+                velocity.y += flyingAccel;
+            }
+
+
+            if (holdJtimer >= maxHoldingJtime || Input.GetKeyUp(KeyCode.Space))
                 isHoldingJ = false;
         }
-    }
 
-    
-    private void FixedUpdate()
-    {
+        velocity.x = Input.GetAxisRaw("Horizontal") * speed;
 
-        if (!isGrounded && isHoldingJ)
-        {
-            velocity = myRB.velocity;
-            velocity.y += flyingAccel;
-            myRB.velocity = velocity;
-        }
+        myRB.velocity = velocity;
     }
 }
 

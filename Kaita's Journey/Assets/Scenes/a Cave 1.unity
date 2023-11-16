@@ -211,13 +211,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &639083615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1168669290062682928, guid: 1fa7417581c573d4e9cb0510ea98960e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4251717050086683820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1048201856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8618099400406708149, guid: a1c25543c641efd49b4b634a2fb65d7f,
     type: 3}
   m_PrefabInstance: {fileID: 3987456181981992315}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1048201861
+--- !u!114 &1048201868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,34 +232,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1048201856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e42d28cda46b34cb7f8804e6db4c25, type: 3}
+  m_Script: {fileID: 11500000, guid: c4ecc92302330404f99050dff974bd86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1048201862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048201856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879f2f1416997c046b56a3331f65416d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1048201863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048201856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c186fc0fcc494cc48b74481ec7f49889, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorGameObject: {fileID: 0}
+  doorOpen: 0
+  doorTime: 5
+  timer: 0
+  pressurePlate: {fileID: 639083615}
+  player: {fileID: 1246394235}
 --- !u!1001 &1100255896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8648,13 +8634,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a3a7ea995e6014d811159c714f9b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0
+  speed: 5
   velocity: {x: 0, y: 0}
-  jumpVelocity: 0
-  GroundHeight: 10
-  maxHoldingJtime: 0.4
+  jumpVelocity: 5
+  flyingAccel: 0.1
+  maxHoldingJtime: 4
   holdJtimer: 0
-  isGounded: 0
+  isGrounded: 0
   isHoldingJ: 0
 --- !u!1 &1525356483
 GameObject:
@@ -8733,7 +8719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525356483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.68, y: -0.79, z: -10}
+  m_LocalPosition: {x: 1.54, y: -0.06, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8803,10 +8789,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2053651610783305468, guid: a1c25543c641efd49b4b634a2fb65d7f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8618099400406708149, guid: a1c25543c641efd49b4b634a2fb65d7f,
         type: 3}
       propertyPath: m_Name
-      value: Idoor
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -8974,12 +8965,12 @@ PrefabInstance:
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.54
+      value: -4.48
       objectReference: {fileID: 0}
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.74
+      value: -4.37
       objectReference: {fileID: 0}
     - target: {fileID: 8640459110251749044, guid: 2206ac811501b2b42b470ae04b76fe0b,
         type: 3}
