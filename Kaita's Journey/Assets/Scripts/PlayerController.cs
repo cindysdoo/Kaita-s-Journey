@@ -4,65 +4,59 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float gravity;
+    public float speed = 5;
     public Vector2 velocity;
-    public float jumpVelocity;
-    public float GroundHeight = 10;
-    public float maxHoldingJtime = 0.4f;
+    private Rigidbody2D myRB;
+    public float jumpVelocity = 5;
+    public float flyingAccel = 1f;
+    public float maxHoldingJtime = 10f;
     public float holdJtimer = 0.0f;
-    public bool isGounded = false;
+    public bool isGrounded = false;
     public bool isHoldingJ = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        myRB = GetComponent<Rigidbody2D>();
+        velocity = new Vector2();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isGounded)
+        velocity = myRB.velocity;
+
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+
+        if (isGrounded)
         {
-            if (isHoldingJ)
-            {
-                holdJtimer += Time.fixedDeltaTime;
-                if (holdJtimer >= maxHoldingJtime)
-                {
-                    isHoldingJ = false;
-                }
-            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                isGounded = false;
+                isGrounded = false;
                 velocity.y = jumpVelocity;
+                myRB.velocity = velocity;
                 isHoldingJ = true;
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isHoldingJ = false;
-        }
-    }
-    private void FixedUpdate()
-    {
-        Vector2 pos = transform.position;
-        if (!isGounded)
-        {
-            pos.y += velocity.y * Time.fixedDeltaTime;
-            if (isHoldingJ)
-            {
-                velocity.y += gravity * Time.fixedDeltaTime;
-            }
-            velocity.y += gravity * Time.fixedDeltaTime;
-            if (pos.y <= GroundHeight)
-            {
-                pos.y = GroundHeight;
-                isGounded = true;
                 holdJtimer = 0;
             }
         }
 
-        transform.position = pos;
+        else if (!isGrounded && isHoldingJ)
+        {
+            if (isHoldingJ && holdJtimer < maxHoldingJtime)
+            {
+                holdJtimer += Time.deltaTime;
+
+                velocity.y += flyingAccel;
+            }
+
+
+            if (holdJtimer >= maxHoldingJtime || Input.GetKeyUp(KeyCode.Space))
+                isHoldingJ = false;
+        }
+
+        velocity.x = Input.GetAxisRaw("Horizontal") * speed;
+
+        myRB.velocity = velocity;
     }
 }
 
