@@ -4,7 +4,40 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/a Cave 1.unity
+    guid: 322019aabefd83045a418dd5b80f5b35
+  - enabled: 1
+    path: Assets/Scenes/a Cave 2.unity
+    guid: df3099213c7056d4b8b204e5300d4423
+  - enabled: 1
+    path: Assets/Scenes/a Cave 3.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/b Between 1.unity
+    guid: 359799f7a556f7843bd7fb7c3c27d67b
+  - enabled: 1
+    path: Assets/Scenes/c Mountain 1.unity
+    guid: 12269ca6b77253a499e4155ac4ad5c77
+  - enabled: 1
+    path: Assets/Scenes/c Mountain 2.unity
+    guid: bbd73e444b55ca34eb97962b1ea0d065
+  - enabled: 1
+    path: Assets/Scenes/c Mountain 3.unity
+    guid: b8833bbc4003e5e45b60af1f46d12e22
+  - enabled: 1
+    path: Assets/Scenes/d Between.unity
+    guid: f43cf2e0f9ffa37459b531a8c94672b6
+  - enabled: 1
+    path: Assets/Scenes/e Castle Level 1.unity
+    guid: 86dbdeef60bce864e8f30d8f4cb31486
+  - enabled: 1
+    path: Assets/Scenes/e Castle Level 2.unity
+    guid: aacf7466fc8e2844b94713413cdb9c60
+  - enabled: 1
+    path: Assets/Scenes/e Castle Level 3.unity
+    guid: 404c216a4fbcac040b13cd99e33ac34e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c0f7c0315fcb530459d8a7f3d16847f1,
       type: 2}
