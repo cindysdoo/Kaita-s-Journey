@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1246394241}
   m_Layer: 0
   m_Name: Player Test
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   speed: 5
   velocity: {x: 0, y: 0}
   jumpVelocity: 5
-  flyingAccel: 0.05
+  flyingAccel: 0.1
   maxHoldingJtime: 0.3
   holdJtimer: 0
   isGrounded: 0
